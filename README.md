@@ -34,3 +34,18 @@ Regenerative power code for electric car
 - Motor: https://emrax.com/e-motors/emrax-228/
 - ESC: https://drive.google.com/file/d/19PIGDJjHQr4P6eKvvkMb4wlcMqGtrt3e/view
 - Battery - (720V nominal recommended) Possible option: https://www.freedomwon.co.za/wp-content/uploads/LiTE-HOME-HV-Range-Overview-Spec-Sheet-3.pdf
+- Sensor Brake (5v)
+Sensor Acclerator (5v)
+Cotroler (arduino / Tinsey)
+Voltage Display
+Shunt 
+Amp Meter 
+Load Balancer (if not built in)
+5 volt Power supply
+Power Switch (5 volt)
+High voltage System cutoff Relay
+Pack Voltage Sensor
+Voltmeter Display
+TPS (throttle Position Sensor)
+LED (green for fully charged, Flashing for charging))
+LED (red for failure)
