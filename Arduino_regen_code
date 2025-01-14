@@ -1,0 +1,91 @@
+# Define pin connections (replace with actual pin numbers)
+power_switch_pin = 2
+key_power_pin = 3
+bat_level_sensor_pin = A0
+accelerator_pin = A1
+brake_pedal_pin = A2
+battery_temp_sensor_pin = A3
+
+# Define LED pin connections
+led_green_pin = 5
+led_red_pin = 6
+
+# Define thresholds and constants
+battery_low_threshold = 70  # Adjust based on battery voltage
+temp_threshold = 50  # Adjust based on temperature sensor output
+max_charge_rate = 100  # Adjust based on system limitations
+max_power_rate = 255  # Adjust based on ESC and motor limitations
+
+def setup():
+  # Initialize serial communication
+  Serial.begin(9600)
+
+  # Set pin modes
+  pinMode(power_switch_pin, INPUT)
+  pinMode(key_power_pin, INPUT)
+  pinMode(bat_level_sensor_pin, INPUT)
+  pinMode(accelerator_pin, INPUT)
+  pinMode(brake_pedal_pin, INPUT)
+  pinMode(battery_temp_sensor_pin, INPUT)
+  pinMode(led_green_pin, OUTPUT)
+  pinMode(led_red_pin, OUTPUT)
+
+def loop():
+  # Read sensor values
+  power_switch_state = digitalRead(power_switch_pin)
+  key_power_state = digitalRead(key_power_pin)
+  bat_level = analogRead(bat_level_sensor_pin)
+  accelerator_value = analogRead(accelerator_pin)
+  brake_value = analogRead(brake_pedal_pin)
+  battery_temp = analogRead(battery_temp_sensor_pin)
+
+  # System state logic
+  system_state = determine_state(power_switch_state, key_power_state, bat_level, battery_temp)
+
+  # Perform actions based on system state
+  if system_state == "Off":
+    # Turn off motor and set LEDs
+    control_motor(0)
+    digitalWrite(led_green_pin, LOW)
+    digitalWrite(led_red_pin, LOW)
+  elif system_state == "Charging":
+    # Implement charging logic using motor as generator
+    charge_rate = calculate_charge_rate(accelerator_value, brake_value)
+    control_motor(charge_rate)
+    digitalWrite(led_green_pin, HIGH)  # Adjust LED behavior for charging
+    digitalWrite(led_red_pin, LOW)
+  elif system_state == "Powering":
+    # Implement motor control based on accelerator pedal
+    motor_power = map(accelerator_value, 0, 1023, 0, max_power_rate)
+    control_motor(motor_power)
+    digitalWrite(led_green_pin, HIGH)  # Adjust LED behavior for powering
+    digitalWrite(led_red_pin, LOW)
+  else:
+    # Handle system fault condition (e.g., blink red LED)
+    control_motor(0)
+    digitalWrite(led_green_pin, LOW)
+    digitalWrite(led_red_pin, HIGH)
+
+  # Display sensor readings for debugging (optional)
+  # Serial.print("Battery Level: ", bat_level)
+  # ...
+
+def determine_state(power_switch, key_power, bat_level, temp):
+  if power_switch == LOW or temp > temp_threshold:
+    return "Off"
+  elif key_power == HIGH and bat_level < battery_low_threshold:
+    return "Charging"
+  elif key_power == HIGH and bat_level >= battery_low_threshold:
+    return "Powering"
+  else:
+    return "System Fault"
+
+def calculate_charge_rate(accelerator, brake):
+  # Implement logic to calculate charge rate based on accelerator and brake pedal positions
+  # Consider increasing charge rate with lower accelerator values and higher brake values
+  # ...
+  return charge_rate
+
+def control_motor(power):
+  # Replace this with code specific to your ESC library/protocol
+  # This function should send appropriate commands to the ESC to control motor power
