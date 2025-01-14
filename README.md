@@ -31,21 +31,27 @@ Regenerative power code for electric car
  - Powering =  engine ignition is off, battery level is above x. Amount of power is mapped to accelerator sensor voltage
 
 ## Parts
-- Motor: https://emrax.com/e-motors/emrax-228/
-- ESC: https://drive.google.com/file/d/19PIGDJjHQr4P6eKvvkMb4wlcMqGtrt3e/view
-- Battery - (720V nominal recommended) Possible option: https://www.freedomwon.co.za/wp-content/uploads/LiTE-HOME-HV-Range-Overview-Spec-Sheet-3.pdf
+
+- Motor: [https://emrax.com/e-motors/emrax-228/](https://emrax.com/e-motors/emrax-228/)
+- ESC: [https://drive.google.com/file/d/19PIGDJjHQr4P6eKvvkMb4wlcMqGtrt3e/view](https://drive.google.com/file/d/19PIGDJjHQr4P6eKvvkMb4wlcMqGtrt3e/view)
+- Battery - (720V nominal recommended) Possible option: [https://www.freedomwon.co.za/wp-content/uploads/LiTE-HOME-HV-Range-Overview-Spec-Sheet-3.pdf](https://www.freedomwon.co.za/wp-content/uploads/LiTE-HOME-HV-Range-Overview-Spec-Sheet-3.pdf)
 - Sensor Brake (5v)
-Sensor Acclerator (5v)
-Cotroler (arduino / Tinsey)
-Voltage Display
-Shunt 
-Amp Meter 
-Load Balancer (if not built in)
-5 volt Power supply
-Power Switch (5 volt)
-High voltage System cutoff Relay
-Pack Voltage Sensor
-Voltmeter Display
-TPS (throttle Position Sensor)
-LED (green for fully charged, Flashing for charging))
-LED (red for failure)
+- Sensor Acclerator (5v)
+- Controller (arduino / Tinsey)
+- Voltage Display
+- Shunt
+- Amp Meter
+- Load Balancer (if not built in)
+- 5 volt Power supply
+- Power Switch (5 volt)
+- High voltage System cutoff Relay
+- Pack Voltage Sensor
+- Voltmeter Display
+- TPS (throttle Position Sensor)
+- LED (green for fully charged, Flashing for charging)
+- LED (red for failure)
+
+
+
+
+
